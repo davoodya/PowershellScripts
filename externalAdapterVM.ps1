@@ -19,3 +19,5 @@ Get-VM DC1, SVR1 | Add-VMNetworkAdapter -Name External1-Mikrotik -Verbose
 
 #Way 2 to add External Adapter
 Get-VMSwitch -Name External2-Huawei Connect-VMNetworkAdapter -VMName DC1, SVR1 -Name External1-Mikrotik -Verbose
+
+Install-Module
