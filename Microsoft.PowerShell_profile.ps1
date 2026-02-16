@@ -84,6 +84,7 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\blue-owl.omp.json"| Invoke-
 
 # Define Custom Variables
 $dayaWebsite = "H:\Repo\DavoodYa` Website\DavoodYa` Customized"
+$python27 = "C:\Program Files\Python27\python.exe"
 
 # Aliases for Files & Directories
 function repo { cd H:\Repo\ }
@@ -93,19 +94,38 @@ function dayaWebsite { cd $dayaWebsite }
 
 # ========== FUNCTIONS(Aliases) TO RUN TOOLS ==========
 function pwsh-empire-server {
-    docker run -it -p 1337:1337 -p 5000:5000 --volumes-from data bcsecurity/empire:latest
+    docker run -it --rm -p 1337:1337 -p 5000:5000 --name pwsh_empiree_server --volumes-from data bcsecurity/empire:latest 
 }
 
 function pwsh-empire-client {
-    docker run -it -p 1338:1338 -p 5001:5001 --volumes-from data bcsecurity/empire:latest client
+    docker run -it --rm -p 1338:1338 -p 5001:5001 --name pwsh_empiree_client --volumes-from data bcsecurity/empire:latest client 
 }
 
 function kaliDocker {
-    docker run -it -v kali-storage:/data kalilinux/kali-rolling /bin/bash 
+    docker run -it --rm -v kali-storage:/data --name kaliDocker kalilinux/kali-rolling /bin/bash
 }
 
 function n8nDocker {
-    docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n
+    docker run -it --rm --name n8n -p 5678:5678 --name n8nDocker -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n
+}
+
+function metasploitDocker {
+    docker run -it --rm --name metasploit -p 4444:4444 -v msf-db:/var/lib/postgresql parrotsec/metasploit
+}
+
+function vapeclub-img {
+    cd H:\Repo\ImageConverter
+    python .\image-cv.py
+}
+
+function webp-conv {
+    cd H:\Repo\ImageConverter
+    python .\convert-seo-optimize.py
+}
+
+function list-h {
+    cd H:\Repo\
+    dir
 }
 
 # ========== PERFORMANCE Speed & NOTES ==========
