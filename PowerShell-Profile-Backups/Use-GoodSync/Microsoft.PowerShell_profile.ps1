@@ -114,6 +114,12 @@ oh-my-posh init pwsh --config "C:\Users\DavoodYa\AppData\Local\oh-my-posh\themes
 ## --- PATH Environment Variable --- ##
 $env:PATH += ";C:\Apps\HackingSec\Windows-Sysinternals-Suite\"
 
+<<<<<<< HEAD
+=======
+## --- Other Environment Variables --- ##
+
+
+>>>>>>> 13eda71 (add latest my powershell scripts)
 
 # ========== CUSTOM VARIABLES ==========
 

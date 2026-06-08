@@ -1,2 +1,2 @@
-./PowerShell-Modules/starship/*
-./ohmyzsh/*
+PowerShell-Modules/starship
+ohmyzsh/
