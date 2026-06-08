@@ -1,0 +1,1 @@
+choco install -y $(Get-Content "Complete_Software_List.txt" | Where-Object { $_ -match "Chocolatey" } | ForEach-Object { $_.DisplayName })

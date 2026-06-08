@@ -1,0 +1,76 @@
+
+Name                            Value
+----                            -----
+_OLD_VIRTUAL_PATH               C:\Program Files\PowerShell\7;C:\Program Files\Microsoft\jdk-11.0.12.7-hotspot\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Pro…
+ALLUSERSPROFILE                 C:\ProgramData
+APPCODE_VM_OPTIONS              C:\ja-netfilter\vmoptions\appcode.vmoptions
+APPDATA                         C:\Users\DavoodYa\AppData\Roaming
+asl.log                         Destination=file
+chocolateyinstall               C:\Users\DavoodYa\AppData\Local\UniGetUI\Chocolatey
+CLion                           C:\Program Files\JetBrains\CLion 2025.3.3\bin
+CLION_VM_OPTIONS                C:\ja-netfilter\vmoptions\clion.vmoptions
+CommonProgramFiles              C:\Program Files\Common Files
+CommonProgramFiles(x86)         C:\Program Files (x86)\Common Files
+CommonProgramW6432              C:\Program Files\Common Files
+COMPUTERNAME                    DAVOODPC
+ComSpec                         C:\WINDOWS\system32\cmd.exe
+configsetroot                   C:\$Windows.~BT
+DATAGRIP_VM_OPTIONS             C:\ja-netfilter\vmoptions\datagrip.vmoptions
+DATASPELL_VM_OPTIONS            C:\ja-netfilter\vmoptions\dataspell.vmoptions
+DEVECOSTUDIO_VM_OPTIONS         C:\ja-netfilter\vmoptions\devecostudio.vmoptions
+DriverData                      C:\Windows\System32\Drivers\DriverData
+GATEWAY_VM_OPTIONS              C:\ja-netfilter\vmoptions\gateway.vmoptions
+GOLAND_VM_OPTIONS               C:\ja-netfilter\vmoptions\goland.vmoptions
+GOPATH                          C:\Users\DavoodYa\go
+HOMEDRIVE                       C:
+HOMEPATH                        \Users\DavoodYa
+IDEA_VM_OPTIONS                 C:\ja-netfilter\vmoptions\idea.vmoptions
+INTEL_DEV_REDIST                C:\Program Files (x86)\Common Files\Intel\Shared Libraries\
+JAVA_HOME                       C:\Program Files\Android\jdk\jdk-8.0.302.8-hotspot\jdk8u302-b08
+JETBRAINS_CLIENT_VM_OPTIONS     C:\ja-netfilter\vmoptions\jetbrains_client.vmoptions
+JETBRAINSCLIENT_VM_OPTIONS      C:\ja-netfilter\vmoptions\jetbrainsclient.vmoptions
+LOCALAPPDATA                    C:\Users\DavoodYa\AppData\Local
+LOGONSERVER                     \\DAVOODPC
+MIC_LD_LIBRARY_PATH             C:\Program Files (x86)\Common Files\Intel\Shared Libraries\compiler\lib\mic
+NUMBER_OF_PROCESSORS            24
+OneDrive                        C:\Users\DavoodYa\OneDrive
+OS                              Windows_NT
+PATHEXT                         .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW;.CPL
+PhpStorm                        C:\Program Files\JetBrains\PhpStorm 2025.3.3\bin
+PHPSTORM_VM_OPTIONS             C:\ja-netfilter\vmoptions\phpstorm.vmoptions
+POWERSHELL_DISTRIBUTION_CHANNEL MSI:Windows 10 Pro for Workstations
+PROCESSOR_ARCHITECTURE          AMD64
+PROCESSOR_IDENTIFIER            Intel64 Family 6 Model 151 Stepping 2, GenuineIntel
+PROCESSOR_LEVEL                 6
+PROCESSOR_REVISION              9702
+ProgramData                     C:\ProgramData
+ProgramFiles                    C:\Program Files
+ProgramFiles(x86)               C:\Program Files (x86)
+ProgramW6432                    C:\Program Files
+PSModulePath                    C:\Users\DavoodYa\Documents\PowerShell\Modules;C:\Program Files\PowerShell\Modules;c:\program files\powershell\7\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+PUBLIC                          C:\Users\Public
+PyCharm                         C:\Program Files\JetBrains\PyCharm 2025.3.3\bin
+PYCHARM_VM_OPTIONS              C:\ja-netfilter\vmoptions\pycharm.vmoptions
+RIDER_VM_OPTIONS                C:\ja-netfilter\vmoptions\rider.vmoptions
+RUBYMINE_VM_OPTIONS             C:\ja-netfilter\vmoptions\rubymine.vmoptions
+RUSTROVER_VM_OPTIONS            C:\ja-netfilter\vmoptions\RustRover.vmoptions
+SESSIONNAME                     Console
+STUDIO_VM_OPTIONS               C:\ja-netfilter\vmoptions\studio.vmoptions
+SystemDrive                     C:
+SystemRoot                      C:\WINDOWS
+TEMP                            C:\Users\DavoodYa\AppData\Local\Temp
+TMP                             C:\Users\DavoodYa\AppData\Local\Temp
+USERDOMAIN                      DAVOODPC
+USERDOMAIN_ROAMINGPROFILE       DAVOODPC
+USERNAME                        DavoodYa
+USERPROFILE                     C:\Users\DavoodYa
+VBOX_MSI_INSTALL_PATH           C:\Program Files\Oracle\VirtualBox\
+VIRTUAL_ENV                     H:\Repo\Downloaded-Repos\irangit\venv
+VIRTUAL_ENV_PROMPT              venv
+WEBIDE_VM_OPTIONS               C:\ja-netfilter\vmoptions\webide.vmoptions
+WEBSTORM_VM_OPTIONS             C:\ja-netfilter\vmoptions\webstorm.vmoptions
+windir                          C:\WINDOWS
+WSLENV                          WT_SESSION:WT_PROFILE_ID:
+WT_PROFILE_ID                   {574e775e-4f2a-5b96-ac1e-a2962a402336}
+WT_SESSION                      dd9618e0-dd77-4c4a-9a82-6c935e6e6e6c
+
