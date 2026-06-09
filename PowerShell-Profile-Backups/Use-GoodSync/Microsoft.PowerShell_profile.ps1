@@ -6,8 +6,8 @@ $env:PATH += ";E:\Tools\Nmap"
 $env:PATH += ";E:\Tools\Rust"
 $env:PATH += ";E:\Tools\Custom"
 
-#For other Environment Variables
-$ENV-NAME = "ENV-VALUE"
+#Other Env Variable:
+#$env:ENVNAME = "ENVVALUE"
 #>
 
 <#
@@ -114,12 +114,9 @@ oh-my-posh init pwsh --config "C:\Users\DavoodYa\AppData\Local\oh-my-posh\themes
 ## --- PATH Environment Variable --- ##
 $env:PATH += ";C:\Apps\HackingSec\Windows-Sysinternals-Suite\"
 
-<<<<<<< HEAD
-=======
 ## --- Other Environment Variables --- ##
+#$env:ENVNAME = "ENVVALUE"
 
-
->>>>>>> 13eda71 (add latest my powershell scripts)
 
 # ========== CUSTOM VARIABLES ==========
 
@@ -139,11 +136,13 @@ function davoodsec { cd H:\@DavoodSec\ }
 function dayaWebsite { cd $dayaWebsite }
 function np { npp $args }
 function exp { explorer $args }
-function nekoproxy { $env:HTTP_PROXY="http://127.0.0.1:2081"; $env:HTTPS_PROXY="http://127.0.0.1:2081"; $args }
+function nekoproxy { $env:HTTP_PROXY="http://127.0.0.1:2081"; $env:HTTPS_PROXY="http://127.0.0.1:2081";}
+function nekoproxy2080 { $env:HTTP_PROXY="http://127.0.0.1:2080"; $env:HTTPS_PROXY="http://127.0.0.1:2080";}
 function nekosocksproxy { $env:ALL_PROXY="socks5://127.0.0.1:2080"; $args }
 function sniproxy { $env:ALL_PROXY="socks5://127.0.0.1:10808"; $args }
 function v2proxy { $env:HTTP_PROXY="http://127.0.0.1:10808"; $env:HTTPS_PROXY="http://127.0.0.1:10808"; $args }
 function pipupdater { pip list --outdated --format=json | ConvertFrom-Json | % { pip install -U $_.name } }
+function ytdl { py H:\Repo\Yakuza-Malware-Arsenal\YtDl.py }
 function gcl { git clone $args }
 function ghc { gh repo clone $args }
 function ghs { gh search repos $args }
@@ -523,6 +522,165 @@ function path-padd {
     Write-Host ""
 }
 
+# ==============================================================================
+# PowerShell Proxy Manager Help Guide
+# ------------------------------------------------------------------------------
+# 1. Enable proxy ONLY for the current terminal session:
+#    setproxy 2081
+# 2. Enable proxy for current terminal + Global Git Config:
+#    setproxy 2081 -g   OR   setproxy 2081 --git
+# 3. Check current proxy configurations and status:
+#    setproxy -s        OR   setproxy --status
+# 4. Display this help menu:
+#    setproxy -h        OR   setproxy --help
+# 5. Disable/Remove proxy from current terminal ONLY:
+#    unsetproxy
+# 6. Disable/Remove proxy from terminal + Global Git Config:
+#    unsetproxy -g      OR   unsetproxy --git
+# ==============================================================================
+
+function setproxy {
+    param(
+        [Parameter(Mandatory=$false, Position=0)]
+        $Argument,
+        
+        [Parameter(Mandatory=$false)]
+        [Alias("g")]
+        [switch]$git,
+
+        [Parameter(Mandatory=$false)]
+        [Alias("s")]
+        [switch]$status
+    )
+
+    # Check if the user is requesting Status
+    if ($Argument -eq "-s" -or $Argument -eq "--status" -or $Argument -eq "status" -or $Argument -eq "s" -or $status) {
+        Write-Host "`n==========================================" -ForegroundColor Magenta
+        Write-Host " CURRENT PROXY STATUS" -ForegroundColor Magenta
+        Write-Host "==========================================" -ForegroundColor Magenta
+        
+        # Check Terminal Session Environment Variables
+        Write-Host "[Terminal Session Variables]" -ForegroundColor White
+        if ($env:HTTP_PROXY)  { Write-Host " -> HTTP_PROXY  : $env:HTTP_PROXY" -ForegroundColor Cyan } else { Write-Host " -> HTTP_PROXY  : NOT SET" -ForegroundColor DarkGray }
+        if ($env:HTTPS_PROXY) { Write-Host " -> HTTPS_PROXY : $env:HTTPS_PROXY" -ForegroundColor Cyan } else { Write-Host " -> HTTPS_PROXY : NOT SET" -ForegroundColor DarkGray }
+        if ($env:ALL_PROXY)   { Write-Host " -> ALL_PROXY   : $env:ALL_PROXY" -ForegroundColor Cyan } else { Write-Host " -> ALL_PROXY   : NOT SET" -ForegroundColor DarkGray }
+        
+        # Check Git Config Global Proxies
+        Write-Host "`n[Git Global Configurations]" -ForegroundColor White
+        $gitHttp  = git config --global http.proxy 2>$null
+        $gitHttps = git config --global https.proxy 2>$null
+
+        if ($gitHttp)  { Write-Host " -> git http.proxy  : $gitHttp" -ForegroundColor Cyan } else { Write-Host " -> git http.proxy  : NOT SET" -ForegroundColor DarkGray }
+        if ($gitHttps) { Write-Host " -> git https.proxy : $gitHttps" -ForegroundColor Cyan } else { Write-Host " -> git https.proxy : NOT SET" -ForegroundColor DarkGray }
+        
+        Write-Host "==========================================" -ForegroundColor Magenta
+        return
+    }
+
+    # Check if the user is requesting Help
+    if ($Argument -eq "-h" -or $Argument -eq "--help" -or $Argument -eq "help" -or $Argument -eq "h" -or ($null -eq $Argument -and !$git)) {
+        Write-Host "`n[ setproxy HELP MENU ]" -ForegroundColor Green
+        Write-Host "Description: Quick utility to configure development proxies for Terminal and Git." -ForegroundColor Gray
+        Write-Host "`nUsage:" -ForegroundColor White
+        Write-Host "  setproxy [PORT]" -ForegroundColor Yellow
+		Write-Host "      Set environment variables ONLY (HTTP, HTTPS, SOCKS5)" -ForegroundColor Cyan
+		Write-Host "      setproxy 2080" -ForegroundColor DarkGray
+		write-Host ""
+        Write-Host "  setproxy [PORT] -g | --git" -ForegroundColor Yellow
+		Write-Host "      Set terminal proxy + Global Git Config" -ForegroundColor Cyan
+		Write-Host "      setproxy 2081 -g" -ForegroundColor DarkGray
+		Write-Host "      setproxy 2081 --git" -ForegroundColor DarkGray
+		write-Host ""
+        Write-Host "  setproxy -s | --status | s" -ForegroundColor Yellow
+		Write-Host "      Check current proxy status for environment and Git" -ForegroundColor Cyan
+		Write-Host "      setproxy -s" -ForegroundColor DarkGray
+		Write-Host "      setproxy --status" -ForegroundColor DarkGray
+		Write-Host "      setproxy s" -ForegroundColor DarkGray
+		write-Host ""
+        Write-Host "  setproxy -h | --help | h | help" -ForegroundColor Yellow
+		Write-Host "      Display this help guide" -ForegroundColor Cyan
+		Write-Host "      setproxy -h" -ForegroundColor DarkGray
+		write-Host ""
+        Write-Host "`nCRITICAL NOTE:" -ForegroundColor Green
+		Write-Host "  unsetproxy" -ForegroundColor Yellow
+        Write-Host "      To disable or clear your proxies, you must run the 'unsetproxy' command." -ForegroundColor Cyan
+		Write-Host "      unsetproxy -g | --git => unsetproxy for git & terminal" -ForegroundColor Cyan	
+		Write-Host "      unsetproxy" -ForegroundColor DarkGray
+		Write-Host "      unsetproxy -g" -ForegroundColor DarkGray
+		Write-Host "      unsetproxy --git" -ForegroundColor DarkGray
+		Write-Host "      unsetproxy --git" -ForegroundColor DarkGray
+        return
+    }
+
+    # Validate and parse the port number
+    [int]$port = 0
+    if (![int]::TryParse($Argument, [ref]$port)) {
+        Write-Host "ERROR: Please provide a valid port number (e.g., setproxy 2081) or valid flag." -ForegroundColor Red
+        return
+    }
+    
+    # 1. Configure Current Terminal Environment Variables
+    $env:HTTP_PROXY  = "http://127.0.0.1:$port"
+    $env:HTTPS_PROXY = "http://127.0.0.1:$port"
+    $env:ALL_PROXY   = "socks5://127.0.0.1:$port"
+    
+    Write-Host "`n==========================================" -ForegroundColor Green
+    Write-Host " Terminal Proxy successfully set to port: $port" -ForegroundColor Green
+    Write-Host " -> HTTP/HTTPS: http://127.0.0.1:$port" -ForegroundColor Gray
+    Write-Host " -> SOCKS5 (ALL_PROXY): socks5://127.0.0.1:$port" -ForegroundColor Gray
+
+    # 2. Configure Git Proxy (Only if -g or --git switch is provided)
+    if ($git) {
+        git config --global http.proxy  "http://127.0.0.1:$port"
+        git config --global https.proxy "http://127.0.0.1:$port"
+        Write-Host " -> Git Global Config updated successfully." -ForegroundColor Cyan
+    } else {
+        Write-Host " -> Git Global Config was NOT altered (use -g to include Git)." -ForegroundColor DarkGray
+    }
+    Write-Host "==========================================" -ForegroundColor Green
+}
+
+function unsetproxy {
+    param(
+        [Parameter(Mandatory=$false, Position=0)]
+        $Argument,
+
+        [Parameter(Mandatory=$false)]
+        [Alias("g")]
+        [switch]$git
+    )
+
+    # Check if the user is requesting help
+    if ($Argument -eq "-h" -or $Argument -eq "--help") {
+        Write-Host "`n[ unsetproxy HELP MENU ]" -ForegroundColor Yellow
+        Write-Host "Description: Clear and unset active proxy configurations." -ForegroundColor Gray
+        Write-Host "`nUsage:" -ForegroundColor White
+        Write-Host "  unsetproxy               -> Remove proxy from the current terminal environment" -ForegroundColor Cyan
+        Write-Host "  unsetproxy -g            -> Remove proxy from terminal + Clear Global Git proxy" -ForegroundColor Cyan
+        return
+    }
+    
+    # 1. Remove Current Terminal Environment Variables
+    Remove-Item Env:\HTTP_PROXY -ErrorAction SilentlyContinue
+    Remove-Item Env:\HTTPS_PROXY -ErrorAction SilentlyContinue
+    Remove-Item Env:\ALL_PROXY -ErrorAction SilentlyContinue
+    
+    Write-Host "`n==========================================" -ForegroundColor Yellow
+    Write-Host " Terminal environment proxies REMOVED." -ForegroundColor Yellow
+    
+    # 2. Clear Git Proxy (If -g or explicitly written as flag)
+    if ($git -or $Argument -eq "-g" -or $Argument -eq "--git") {
+        git config --global --unset http.proxy
+        git config --global --unset https.proxy
+        Write-Host " Git global proxy configs REMOVED." -ForegroundColor Cyan
+    } else {
+        Write-Host " Git Global Config was NOT altered." -ForegroundColor DarkGray
+    }
+    Write-Host "==========================================" -ForegroundColor Yellow
+}
+
+
+
 # ========== PERFORMANCE Speed & NOTES ==========
 # Print Time of Profile loaded on terminal
 
@@ -686,3 +844,19 @@ Set-Alias -Name zi -Value __zoxide_zi -Option AllScope -Scope Global -Force
 # `echo $profile` in PowerShell):
 #
 # Invoke-Expression (& { (zoxide init powershell | Out-String) })
+
+# =============================================================================
+#
+# Utility functions for yazi file manager => "y" command
+#
+# =============================================================================
+
+function y {
+	$tmp = (New-TemporaryFile).FullName
+	yazi.cmd @args --cwd-file="$tmp"
+	$cwd = Get-Content -Path $tmp -Encoding UTF8
+	if ($cwd -and $cwd -ne $PWD.Path -and (Test-Path -LiteralPath $cwd -PathType Container)) {
+		Set-Location -LiteralPath (Resolve-Path -LiteralPath $cwd).Path
+	}
+	Remove-Item -Path $tmp
+}

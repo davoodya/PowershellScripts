@@ -1,0 +1,11 @@
+2026-06-09 01:32:24: -- Analysis Started by Periodic Timer
+2026-06-09 01:32:24: L: Reading State File C:/Users/DavoodYa/Documents/WindowsPowerShell/_gsdata_/_file_state_v4._gs
+2026-06-09 01:32:24: R: Reading State File H:/Repo/powershell-scripting/PowerShell-Profile-Backups/Use-GoodSync/_gsdata_/_file_state_v4._gs
+2026-06-09 01:32:24: Changes: 1, Conflicts: 0, CopyTime: 0, FixState: 0, Errors: 0, All: 41227
+2026-06-09 01:32:24: Left to Right: Copy File: 1 
+2026-06-09 01:32:24: == Sync Started by Periodic Timer
+2026-06-09 01:32:24: Start only 1 threads, limited by tasks to run
+2026-06-09 01:32:25: Copy Over 'C:/Users/DavoodYa/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1' -> 'H:/Repo/powershell-scripting/PowerShell-Profile-Backups/Use-GoodSync/Microsoft.PowerShell_profile.ps1' (31,350)
+2026-06-09 01:32:25: Save State File C:/Users/DavoodYa/Documents/WindowsPowerShell/_gsdata_/_file_state_v4._gs
+2026-06-09 01:32:25: Save State File H:/Repo/powershell-scripting/PowerShell-Profile-Backups/Use-GoodSync/_gsdata_/_file_state_v4._gs
+2026-06-09 01:32:25: == Sync Complete. Time: 00:00:01, Speed: 0.00/s, OK: 1, Errors: 0
